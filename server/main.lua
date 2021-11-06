@@ -11,9 +11,16 @@ Citizen.CreateThread(function()
     end
 end)
 
--- Command
+-- Usable Item
+QBCore.Functions.CreateUseableItem("mastercard", function(source, item)
+	openAtmMenu(source)
+end)
 
-RegisterCommand('atm', function(source)
+QBCore.Functions.CreateUseableItem("visa", function(source, item)
+	openAtmMenu(source)
+end)
+
+function openAtmMenu(source) 
     local src = source
     local xPlayer = QBCore.Functions.GetPlayer(src)
     local visas = xPlayer.Functions.GetItemsByName('visa')
@@ -59,7 +66,7 @@ RegisterCommand('atm', function(source)
         end
     end
     TriggerClientEvent('qb-atms:client:loadATM', src, cards)
-end)
+end
 
 -- Event
 
